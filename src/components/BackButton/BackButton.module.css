@@ -1,0 +1,21 @@
+.back_button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.25rem;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+	background-color: var(--secondary-dark-1-color);
+	color: white;
+	font-family: inherit;
+	font-size: inherit;
+	box-shadow: 0 0 4px var(--secondary-color);
+	cursor: pointer;
+	transition: var(--basic-all-transition);
+
+	&:hover {
+		background-color: var(--secondary-color);
+		box-shadow: 0 0 4px var(--secondary-light-2-color);
+	}
+}

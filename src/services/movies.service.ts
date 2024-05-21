@@ -2,9 +2,10 @@ import { Movie, PaginatedMoviesResponse, UrlMoviesParams } from "@/models/movie.
 
 const API_URL = process.env.API_URL;
 const API_KEY = process.env.API_KEY;
+type Size = "w45" | "w92" | "w154" | "w185" | "w300" | "w342" | "w500" | "h632" | "w780" | "w1280" | "original";
 
 export async function fetchMovies({ page = 1, language = "es-ES", region = "ES" }: UrlMoviesParams): Promise<PaginatedMoviesResponse> {
-	const url = getUrlListNowPlaying({ page, language });
+	const url = getUrlListTopRated({ page, language });
 	const options = getOptions();
 
 	const res = await fetch(url, options);
@@ -21,7 +22,19 @@ export async function fetchMovie({ id, language = "es-ES" }: UrlMoviesParams): P
 	return data;
 }
 
-// #region URL MOVIES
+export function getImageUrl(path: string, size: Size) {
+	return `${process.env.IMG_URL}/${size}${path}`;
+}
+
+export function getImageUrlOriginal(path: string) {
+	return getImageUrl(path, "original");
+}
+
+export function getImageUrlW780(path: string) {
+	return getImageUrl(path, "w780");
+}
+
+// #region utils URL MOVIES
 function getUrlListUpcoming({ page = 1, language = "es-ES", region = "ES" }: UrlMoviesParams): string {
 	return `${API_URL}/movie/upcoming?language=${language}&page=${page}&region=${region}`;
 }
@@ -43,6 +56,7 @@ function getUrlDetails({ id, language = "es-ES" }: UrlMoviesParams): string {
 }
 // #endregion
 
+// #region utils
 function getOptions() {
 	const options = {
 		method: "GET",
@@ -53,3 +67,4 @@ function getOptions() {
 	};
 	return options;
 }
+// #endregion

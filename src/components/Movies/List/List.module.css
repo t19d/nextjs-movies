@@ -1,0 +1,30 @@
+.list {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+	.list {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 24px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.list {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.list {
+		grid-template-columns: repeat(5, 1fr);
+	}
+}
+
+@media screen and (min-width: 3840px) {
+	.list {
+		grid-template-columns: repeat(10, 1fr);
+	}
+}

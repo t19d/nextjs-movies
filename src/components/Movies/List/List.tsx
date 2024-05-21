@@ -1,9 +1,9 @@
-import { Movie } from "@/models/movie.model";
+import { MovieListItem } from "@/models/movie.model";
 import Card from "../Card/Card";
 import styles from "./List.module.css";
 
 interface ListProps {
-	movies: Movie[];
+	movies: MovieListItem[];
 	page: number;
 	totalPages: number;
 	totalResults: number;

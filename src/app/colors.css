@@ -17,8 +17,10 @@
 	--secondary-dark-2-color: #38000e;
 
 	--dark-semitransparent-color: #000000d9;
+	--dark-transparent-color: #000000b3;
 
 	/* TEXT */
-	--light-text-color: #fcfefe;
+	--light-text-color: #ffffff;
+	--light-dark-text-color: #dfdfdf;
 	--warning-text-color: #ffbf00;
 }

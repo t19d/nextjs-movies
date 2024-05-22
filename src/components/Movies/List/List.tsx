@@ -10,15 +10,16 @@ interface ListProps {
 	page: number;
 	totalPages: number;
 	totalResults?: number;
+	searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default function List({ movies, page, totalPages }: ListProps) {
+export default function List({ movies, page, totalPages, searchParams }: ListProps) {
 	return (
 		<section>
 			{!movies || movies?.length === 0 ? (
 				<article className={styles.notFound}>
 					<h2>Películas no encontradas</h2>
-					<BackButton>Ir atrás</BackButton>
+					<BackButton searchParams={searchParams}>Ir atrás</BackButton>
 				</article>
 			) : (
 				<>
@@ -27,7 +28,7 @@ export default function List({ movies, page, totalPages }: ListProps) {
 					</header>
 					<main className={styles.list}>
 						{movies.map((movie) => (
-							<Card key={movie.id} movie={movie} />
+							<Card key={movie.id} movie={movie} searchParams={searchParams} />
 						))}
 					</main>
 					<footer>

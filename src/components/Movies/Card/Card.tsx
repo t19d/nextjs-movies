@@ -3,12 +3,14 @@ import { MovieListItem } from "@/models/movie.model";
 import styles from "./Card.module.css";
 import Link from "next/link";
 import { getImageUrlW780 } from "@/services/movies.service";
+import { getRouteWithSearchParams } from "@/tools/utils";
 
 interface CardProps {
 	movie: MovieListItem;
+	searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default function Card({ movie }: CardProps) {
+export default function Card({ movie, searchParams }: CardProps) {
 	const poster = getImageUrlW780(movie.poster_path);
 
 	// Redondear hasta 1 decimal
@@ -16,8 +18,10 @@ export default function Card({ movie }: CardProps) {
 		return Math.round(rating * 10) / 10;
 	};
 
+	let route = getRouteWithSearchParams(`/${movie.id}`, searchParams);
+
 	return (
-		<Link href={`/${movie.id}`}>
+		<Link href={route}>
 			<div className={styles.card} style={{ backgroundImage: `url(${poster})` }}>
 				<span className={styles.rating}>{roundRating(movie.vote_average)}</span>
 				<div className={styles.overlay}>

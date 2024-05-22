@@ -3,7 +3,12 @@ import styles from "./page.module.css";
 import BackButton from "@/components/BackButton/BackButton";
 import { BsCalendar3, BsCaretLeftFill, BsFillStarFill } from "react-icons/bs";
 
-export default async function MovieDetail({ params }: { params: { id: string } }) {
+interface MovieDetailProps {
+	params: { id: string };
+	searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default async function MovieDetail({ params, searchParams }: MovieDetailProps) {
 	const { id } = params;
 	const movie = await fetchMovie({ id: parseInt(id as string) });
 
@@ -98,7 +103,7 @@ export default async function MovieDetail({ params }: { params: { id: string } }
 						)}
 					</div>
 
-					<BackButton>
+					<BackButton searchParams={searchParams}>
 						<BsCaretLeftFill />
 						Ir atrás
 					</BackButton>

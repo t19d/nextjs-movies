@@ -1,3 +1,11 @@
+.notFound {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+}
+
 .list {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);

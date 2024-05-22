@@ -3,14 +3,19 @@ import styles from "./page.module.css";
 import List from "@/components/Movies/List/List";
 import { fetchMovies } from "@/services/movies.service";
 
-export default async function Home() {
+export default async function Home({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+	let searchParamPage = searchParams?.page ?? 1;
+	// Convertir a número
+	searchParamPage = Number(searchParamPage);
+
+	// Llamar a la API
 	const {
 		results: movies,
 		page,
 		total_pages: totalPages,
 		total_results: totalResults,
 	} = await fetchMovies({
-		page: 1,
+		page: searchParamPage,
 	});
 
 	return (

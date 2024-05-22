@@ -22,15 +22,6 @@ export interface MovieListItem {
 	vote_count: number;
 }
 
-export interface UrlMoviesParams {
-	page?: number;
-	sort_by?: string;
-	include_adult?: boolean;
-	language?: string;
-	region?: string; // ISO-3166-1 code
-	id?: number;
-}
-
 export interface Movie {
 	adult: boolean;
 	backdrop_path: string;

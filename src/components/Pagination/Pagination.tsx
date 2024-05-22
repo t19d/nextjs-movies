@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import styles from "./Pagination.module.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -10,21 +10,25 @@ interface PaginationProps {
 
 export default function Pagination({ totalPages, page }: PaginationProps) {
 	const router = useRouter();
+	const pathname = usePathname();
+	const searchParams = useSearchParams();
 
 	const setPage = (newPage: number) => {
-		router.push(`/?page=${newPage}`);
+		// Añadir al query params la page
+		const params = new URLSearchParams(searchParams.toString());
+		params.set("page", `${newPage}`);
+		const newSearchParams = params.toString();
+
+		// Actualizar la URL con la nueva página
+		router.push(pathname + "?" + newSearchParams);
 	};
 
 	const handlePrevPage = () => {
-		if (page > 1) {
-			setPage(page - 1);
-		}
+		if (page > 1) setPage(page - 1);
 	};
 
 	const handleNextPage = () => {
-		if (page < Math.ceil(totalPages / 20)) {
-			setPage(page + 1);
-		}
+		if (page < totalPages) setPage(page + 1);
 	};
 
 	return (

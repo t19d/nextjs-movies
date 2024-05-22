@@ -1,10 +1,10 @@
 import styles from "./Header.module.css";
-import Search from "./Search/Search";
+import Filter from "./Filter/Filter";
 
 export default function Header() {
 	return (
 		<header className={styles.header}>
-			<Search />
+			<Filter />
 		</header>
 	);
 }

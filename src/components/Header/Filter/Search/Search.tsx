@@ -7,7 +7,7 @@ export default function Search() {
 	const router = useRouter();
 	const pathname = usePathname();
 	const searchParams = useSearchParams();
-	const [inputValue, setInputValue] = useState<string>(searchParams.get("query") as string);
+	const [inputValue, setInputValue] = useState<string>((searchParams.get("query") as string) ?? "");
 
 	// Manejar el cambio de input y establecer el valor del input
 	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,8 +18,13 @@ export default function Search() {
 	useEffect(() => {
 		const handler = setTimeout(() => {
 			const params = new URLSearchParams(searchParams.toString());
-			// Poner el valor del input en el query params
-			params.set("query", inputValue);
+			if (!inputValue) {
+				// Eliminar el valor del input del query params
+				params.delete("query");
+			} else {
+				// Poner el valor del input en el query params
+				params.set("query", inputValue);
+			}
 			const newSearchParams = params.toString();
 
 			// Actualizar la URL con el nuevo tipo

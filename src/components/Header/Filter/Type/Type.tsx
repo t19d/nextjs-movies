@@ -3,6 +3,7 @@ import style from "./Type.module.css";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+import { IoIosArrowDown } from "react-icons/io";
 
 export default function Type() {
 	const router = useRouter();
@@ -33,12 +34,17 @@ export default function Type() {
 	};
 
 	return (
-		<select className={style.select} value={currentType} onChange={handleChange} disabled={isDisabled}>
-			{Object.keys(textTypes).map((type: string) => (
-				<option key={type} value={type}>
-					{textTypes[type as keyof typeof textTypes]}
-				</option>
-			))}
-		</select>
+		<div className={style.select_container}>
+			<select className={style.select} value={currentType} onChange={handleChange} disabled={isDisabled}>
+				{Object.keys(textTypes).map((type: string) => (
+					<option key={type} value={type}>
+						{textTypes[type as keyof typeof textTypes]}
+					</option>
+				))}
+			</select>
+			<span className={style.arrow} aria-hidden="true">
+				<IoIosArrowDown />
+			</span>
+		</div>
 	);
 }

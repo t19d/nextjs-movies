@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Search.module.css";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { RxCross2 } from "react-icons/rx";
 
 export default function Search() {
 	const router = useRouter();
@@ -39,7 +40,10 @@ export default function Search() {
 
 	return (
 		<div className={styles.search}>
-			<input type="text" value={inputValue} placeholder="Buscar..." onInput={handleInput} />
+			<input className={styles.input} type="text" value={inputValue} placeholder="Buscar..." onInput={handleInput} />
+			<button className={styles.button} onClick={() => setInputValue("")}>
+				<RxCross2 />
+			</button>
 		</div>
 	);
 }

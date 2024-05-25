@@ -14,8 +14,6 @@
 	--primary-dark-2-semitransparent-color: #091727b3;
 	--primary-dark-2-transparent-color: #0917274d;
 
-
-
 	--secondary-light-2-color: #bd2f53;
 	--secondary-light-1-color: #9d1336;
 	--secondary-color: #800020;
@@ -27,6 +25,7 @@
 
 	/* TEXT */
 	--light-text-color: #ffffff;
+	--light-transparent-text-color: #ffffff4d;
 	--light-dark-text-color: #dfdfdf;
 	--warning-text-color: #ffbf00;
 }

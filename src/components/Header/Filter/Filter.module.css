@@ -3,3 +3,9 @@
 	justify-content: center;
 	gap: 1rem;
 }
+
+@media screen and (max-width: 768px) {
+	.filter {
+		flex-direction: column-reverse;
+	}
+}

@@ -19,3 +19,12 @@
 		box-shadow: 0 0 4px var(--secondary-light-2-color);
 	}
 }
+
+@media screen and (max-width: 480px) {
+	.back_button {
+		position: absolute;
+		top: 24px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
